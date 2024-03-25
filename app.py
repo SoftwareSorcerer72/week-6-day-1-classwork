@@ -22,5 +22,5 @@ def test():
             'name': 'Brian'
         }
         my_dicts.append(a_dict)
-        
-    return my_dicts, 
+
+    return my_dicts
