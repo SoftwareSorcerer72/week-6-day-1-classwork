@@ -1,5 +1,6 @@
 from flask import Flask # Import the Flask class from the flask module
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from config import Config
 
 # Create an instance of Flask called app which will be the central object
@@ -10,5 +11,8 @@ app.config.from_object(Config)
 # Create an instance of SQLAlchemy called db which will be the central object for our databse
 db = SQLAlchemy(app)
 
+# Create an instance of Migrate with the app and db
+migrate = Migrate(app, db)
+
 # import the routes to the app
-from . import routes
+from . import routes, models
