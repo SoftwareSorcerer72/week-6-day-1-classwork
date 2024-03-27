@@ -1,5 +1,5 @@
 from . import db
-from datetime import datetime
+from datetime import datetime, timezone
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -10,7 +10,7 @@ class User(db.Model):
     email = db.Column(db.String, nullable=False, unique=True)
     username = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
-    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_created = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -39,3 +39,12 @@ class User(db.Model):
             "email": self.email,
             "dateCreated": self.date_created
         }
+
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    body = db.Column(db.String, nullable=False)
+    date_created = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
+    # In SQL - user_id INTEGER NOT NULL, FOREIGN KEY(user_id) REFERENCES user(id)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
