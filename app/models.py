@@ -11,6 +11,7 @@ class User(db.Model):
     username = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
+    posts = db.relationship('Post', back_populates='author')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -48,6 +49,7 @@ class Post(db.Model):
     date_created = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
     # In SQL - user_id INTEGER NOT NULL, FOREIGN KEY(user_id) REFERENCES user(id)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    author = db.relationship('User', back_populates='posts')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -66,5 +68,5 @@ class Post(db.Model):
             "title": self.title,
             "body": self.body,
             "dateCreated": self.date_created,
-            "user_id": self.user_id
+            "author": self.author.to_dict()
         }

@@ -1,10 +1,7 @@
 from flask import request, render_template
 from . import app, db
 from .models import User, Post
-from fake_data.posts import post_data
 
-# Will set up db later, for now we will store all Users in this users list
-users = []
 
 # Define a route
 @app.route("/")
