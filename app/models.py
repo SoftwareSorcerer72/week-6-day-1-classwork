@@ -29,3 +29,13 @@ class User(db.Model):
 
     def check_password(self, plaintext_password):
         return check_password_hash(self.password, plaintext_password)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "firstName": self.first_name,
+            "lastName": self.last_name,
+            "username": self.username,
+            "email": self.email,
+            "dateCreated": self.date_created
+        }
