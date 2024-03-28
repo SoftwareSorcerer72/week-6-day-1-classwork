@@ -18,12 +18,12 @@ class User(db.Model):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.__set_password(kwargs.get('password', ''))
+        self.set_password(kwargs.get('password', ''))
 
     def __repr__(self):
         return f"<User {self.id}|{self.username}>"
 
-    def __set_password(self, plaintext_password):
+    def set_password(self, plaintext_password):
         self.password = generate_password_hash(plaintext_password)
         self.save()
 
