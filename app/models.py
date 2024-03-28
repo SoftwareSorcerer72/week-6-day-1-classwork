@@ -83,3 +83,11 @@ class Post(db.Model):
             "dateCreated": self.date_created,
             "author": self.author.to_dict()
         }
+
+    def update(self, **kwargs):
+        allowed_fields = {'title', 'body'}
+
+        for key, value in kwargs.items():
+            if key in allowed_fields:
+                setattr(self, key, value)
+        self.save()
