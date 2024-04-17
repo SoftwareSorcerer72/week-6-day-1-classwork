@@ -25,6 +25,33 @@
 
             <div class="row">
 
+                <!-- Get Token -->
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <span class="badge text-bg-success">GET</span> /token
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Authentication: <code>Basic Authentication</code></li>
+                            <li class="list-group-item">Example Payload: <code>N/A</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Create User -->
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <span class="badge text-bg-warning">POST</span> /users
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Authentication: <code>None</code></li>
+                            <li class="list-group-item">Example Payload: <code>{ "firstName": "Michael", "lastName": "Jordan", "username": "jumpman23", "email": "mj@bulls.com", "password": "6rings!" }</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Get Posts -->
                 <div class="col-12">
                     <div class="card mb-3">
                         <div class="card-header">
@@ -37,6 +64,7 @@
                     </div>
                 </div>
 
+                <!-- Get Post -->
                 <div class="col-12">
                     <div class="card mb-3">
                         <div class="card-header">
@@ -49,26 +77,67 @@
                     </div>
                 </div>
 
+                <!-- Create Post -->
                 <div class="col-12">
                     <div class="card mb-3">
                         <div class="card-header">
                             <span class="badge text-bg-warning">POST</span> /posts
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Authentication: <code>None</code></li>
+                            <li class="list-group-item">Authentication: <code>Token Authentication</code></li>
                             <li class="list-group-item">Example Payload: <code>{ "title": "Example Title", "body": "Example Body" }</code></li>
                         </ul>
                     </div>
                 </div>
 
+                <!-- Edit Post -->
                 <div class="col-12">
                     <div class="card mb-3">
                         <div class="card-header">
-                            <span class="badge text-bg-warning">POST</span> /users
+                            <span class="badge text-bg-info">PUT</span> /posts/&lt;post_id&gt;
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Authentication: <code>None</code></li>
-                            <li class="list-group-item">Example Payload: <code>{ "firstName": "Michael", "lastName": "Jordan", "username": "jumpman23", "email": "mj@bulls.com", "password": "6rings!" }</code></li>
+                            <li class="list-group-item">Authentication: <code>Token Authentication</code></li>
+                            <li class="list-group-item">Example Payload: <code>{ "title": "Updated Title" }</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Delete Post -->
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <span class="badge text-bg-danger">DELETE</span> /posts/&lt;post_id&gt;
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Authentication: <code>Token Authentication</code></li>
+                            <li class="list-group-item">Example Payload: <code>N/A</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Create Comment -->
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <span class="badge text-bg-warning">POST</span> /posts/&lt;post_id&gt;/comments
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Authentication: <code>Token Authentication</code></li>
+                            <li class="list-group-item">Example Payload: <code>{ "body": "Great Post!" }</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Delete Comment -->
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <span class="badge text-bg-danger">DELETE</span> /posts/&lt;post_id&gt;/comments
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Authentication: <code>Token Authentication</code></li>
+                            <li class="list-group-item">Example Payload: <code>N/A</code></li>
                         </ul>
                     </div>
                 </div>

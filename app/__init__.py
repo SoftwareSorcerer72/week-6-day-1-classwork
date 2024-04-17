@@ -8,11 +8,10 @@ app = Flask(__name__)
 # Set the configuration for the app
 app.config.from_object(Config)
 
-# Create an instance of SQLAlchemy called db which will be the central object for our databse
+# Create an instance of SQLAlchemy called db which be the cental object for our database
 db = SQLAlchemy(app)
-
 # Create an instance of Migrate with the app and db
 migrate = Migrate(app, db)
 
-# import the routes to the app
+# import the routes to the app and also the models
 from . import routes, models
